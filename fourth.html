@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ben.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.j"></script>
+</head>
+<style>
+
+</style>
+
+<body background="img2.jpg" style="background-repeat: no-repeat; background-size: cover;">
+    <nav class="navbar bg-light" >
+        <div class="container-fluid " >
+          <a class="navbar-brand text-success text- ">BEN UNIVERSITY</a>
+          <form class="d-flex" role="search">
+            
+            <button class="btn btn-outline-success" type="submit" onclick="login()">login</button>
+          </form>
+        </div>
+      </nav>
+    <div class="w-50 mx-auto my-5 text-center shadow p-3 rounded-4">
+        <h2 class="text-success ">REGISTRATION FROM</h2>
+        <input type="text" class="form-control my-4" aria-label="Username" placeholder="firstname" id="firstName">
+        <input type="text" class="form-control my-4" aria-label="Username" placeholder="lastname" id="lastName">
+        <input type="text" class="form-control my-4" aria-label="Username" placeholder="email" id="email">
+        <input type="text" class="form-control my-4" aria-label="Username" placeholder="password" id="passWord">
+        <button class="btn btn-outline-success W-100 my-3  " onclick="sucess()">sign up</button><br>
+    </div>
+    <!-- <input type="text" id="searchInp" placeholder="search using index"> -->
+    <!-- <button onclick="search()">search</button> -->
+    <script>
+        let dat = new Date
+        let da = dat.toLocaleTimeString()
+        var newStudent = []
+        
+        if (localStorage.studentDetails) {
+           newStudent = JSON.parse(localStorage.getItem("studentDetails"))
+        }
+        function sucess() {
+            // console.log(da);
+            if (firstName.value == "" || lastName.value == "" || email.value == "" || passWord.value == "") {
+                alert(' incompleted info')
+            } else {
+
+                let mt = Math.round(202200 + Math.random() * 99 )
+                // console.log(mt);
+                var allStudent = {
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    passWord: passWord.value,
+                    MatricNum: mt,
+                    Time:da
+               }
+                newStudent.push(allStudent)
+                localStorage.setItem("studentDetails",JSON.stringify(newStudent))
+                console.log(newStudent);
+                
+                alert("Congratulation your matirc number is " + mt)
+            }  
+            firstName.value = ""
+            lastName.value = ""
+            email.value = ""
+            passWord.value = ""
+            window.location.href="login.html"
+        }
+      
+    </script>
+</body>
+
+</html>
